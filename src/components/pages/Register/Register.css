@@ -1,0 +1,131 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  background-image: url("../imagens/encanadora.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+header nav .home-link {
+  position: absolute;
+  left: 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #f2441d;
+  border-radius: 0.5rem;
+}
+
+header nav .home-link:hover {
+  background-color: #cf3512;
+}
+
+header nav .logo {
+  max-height: 3rem;
+}
+
+header,
+footer {
+  background-color: #0583f2;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+main {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout responsivo com Flexbox */
+.hidden {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
