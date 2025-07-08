@@ -1,116 +1,96 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import "./Index.css";
+import { useServices, useCarousel } from "../../../hooks/useServices";
+import {
+  MainContainer,
+  MainOptions,
+  ServiceOption,
+  StyledLink,
+  ServicesSection,
+  CarouselContainer,
+  Items,
+  Item,
+  ServiceInfo,
+  CarouselControls,
+  CarouselBtn,
+  ServiceLabels,
+  ServiceLabel,
+  FeaturedServices,
+  ServicesGrid,
+  ServiceCard,
+} from "./Index.styled";
 
 const Index = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  
-  const services = [
-    {
-      id: 1,
-      name: "Encanador",
-      image: "/src/components/images/encanador.jpg"
-    },
-    {
-      id: 2,
-      name: "Faxineira",
-      image: "/src/components/images/faxineira.jpg"
-    },
-    {
-      id: 3,
-      name: "Jardineiro",
-      image: "/src/components/images/jardineiro.jpg"
-    },
-    {
-      id: 4,
-      name: "Pedreiro",
-      image: "/src/components/images/pedreiro.jpg"
-    },
-    {
-      id: 5,
-      name: "Pintor",
-      image: "/src/components/images/pintor.jpg"
-    }
-  ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % services.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + services.length) % services.length);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
-  // Auto-play do carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % services.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [services.length]);
-
-  const getItemClass = (index) => {
-    if (index === currentSlide) return "item active";
-    if (index === (currentSlide - 1 + services.length) % services.length) return "item prev";
-    if (index === (currentSlide + 1) % services.length) return "item next";
-    return "item";
-  };
+  const { services: allServices, getFeaturedServices } = useServices();
+  const featuredServices = getFeaturedServices();
+  const { currentSlide, nextSlide, prevSlide, getItemClass } =
+    useCarousel(featuredServices);
 
   return (
-    <main className="index">
-      <section className="main-options">
-        <article className="service-option">
+    <MainContainer>
+      <MainOptions>
+        <ServiceOption>
           <h2>Cliente</h2>
           <p>Precisa de um serviço? Faça seu pedido agora mesmo.</p>
-          <Link to="/cliente" className="btn">
+          <StyledLink as={Link} to="/cliente">
             Pedir Serviço
-          </Link>
-        </article>
-      </section>
+          </StyledLink>
+        </ServiceOption>
+      </MainOptions>
 
-      <section className="services-section">
+      <ServicesSection>
         <h1>Serviços mais procurados</h1>
-        
-        <div className="carousel-container">
-          <div className="items">
-            {services.map((service, index) => (
-              <div key={service.id} className={getItemClass(index)}>
+
+        <ServiceLabels>
+          <ServiceLabel>{featuredServices[currentSlide].name}</ServiceLabel>
+        </ServiceLabels>
+        <CarouselContainer>
+          <Items>
+            {featuredServices.map((service, index) => (
+              <Item key={service.id} className={getItemClass(index)}>
                 <img src={service.image} alt={service.name} />
-              </div>
+                <ServiceInfo>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                  <div className="price">{service.price}</div>
+                  <div className="rating">
+                    ⭐ {service.rating} ({Math.floor(Math.random() * 50 + 10)}{" "}
+                    avaliações)
+                  </div>
+                  <div className="availability">{service.availability}</div>
+                </ServiceInfo>
+              </Item>
             ))}
-          </div>
+          </Items>
 
-          <div className="carousel-controls">
-            <button className="carousel-btn" onClick={prevSlide}>
+          <CarouselControls>
+            <CarouselBtn onClick={prevSlide}>
               <i className="fas fa-chevron-left"></i>
-            </button>
-            <button className="carousel-btn" onClick={nextSlide}>
+            </CarouselBtn>
+            <CarouselBtn onClick={nextSlide}>
               <i className="fas fa-chevron-right"></i>
-            </button>
-          </div>
+            </CarouselBtn>
+          </CarouselControls>
+        </CarouselContainer>
+      </ServicesSection>
 
-          <div className="carousel-indicators">
-            {services.map((_, index) => (
-              <button
-                key={index}
-                className={`indicator ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-              />
-            ))}
-          </div>
-
-          <div className="service-labels">
-            <div className="service-label">
-              {services[currentSlide].name}
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+      <FeaturedServices>
+        <h2>Todos os Serviços Disponíveis</h2>
+        <ServicesGrid>
+          {allServices.map((service) => (
+            <ServiceCard key={service.id}>
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <div className="service-details">
+                <span className="price">{service.price}</span>
+                <span className="rating">⭐ {service.rating}</span>
+              </div>
+              <div className="availability">{service.availability}</div>
+              <button className="service-btn">Solicitar Serviço</button>
+            </ServiceCard>
+          ))}
+        </ServicesGrid>
+      </FeaturedServices>
+    </MainContainer>
   );
 };
 

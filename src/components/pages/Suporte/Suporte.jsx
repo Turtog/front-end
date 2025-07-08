@@ -1,4 +1,13 @@
-import "./Suporte.css";
+import {
+  MainContainer,
+  FormSection,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Textarea,
+  Button,
+} from "./Suporte.styled";
 
 const Suporte = () => {
   const handleSubmit = (e) => {
@@ -14,30 +23,30 @@ const Suporte = () => {
   };
 
   return (
-    <main>
+    <MainContainer>
       <h1>Suporte</h1>
-      <section className="form-section">
+      <FormSection>
         <h2>Entre em Contato Conosco</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="nome">Nome</label>
-            <input type="text" id="nome" name="nome" required />
-          </div>
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label htmlFor="nome">Nome</Label>
+            <Input type="text" id="nome" name="nome" required />
+          </FormGroup>
 
-          <div className="form-group">
-            <label htmlFor="email">E-mail</label>
-            <input type="email" id="email" name="email" required />
-          </div>
+          <FormGroup>
+            <Label htmlFor="email">E-mail</Label>
+            <Input type="email" id="email" name="email" required />
+          </FormGroup>
 
-          <div className="form-group">
-            <label htmlFor="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" rows={4} required />
-          </div>
+          <FormGroup>
+            <Label htmlFor="mensagem">Mensagem</Label>
+            <Textarea id="mensagem" name="mensagem" rows={4} required />
+          </FormGroup>
 
-          <button type="submit">Enviar</button>
-        </form>
-      </section>
-    </main>
+          <Button type="submit">Enviar</Button>
+        </Form>
+      </FormSection>
+    </MainContainer>
   );
 };
 

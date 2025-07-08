@@ -1,30 +1,39 @@
 import { Link } from "react-router-dom";
-import "./Login.css";
+import {
+  MainContainer,
+  FormSection,
+  Form,
+  Label,
+  Input,
+  Button,
+  RegisterText,
+  RegisterLink,
+} from "./Login.styled";
 
 const Login = () => {
   return (
-    <main>
-      <section className="form-section">
+    <MainContainer>
+      <FormSection>
         <article>
           <h2>LOGIN</h2>
-          <form>
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+          <Form>
+            <Label htmlFor="email">Email:</Label>
+            <Input type="email" id="email" name="email" required />
 
-            <label htmlFor="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required />
+            <Label htmlFor="senha">Senha:</Label>
+            <Input type="password" id="senha" name="senha" required />
 
-            <button type="submit">Entrar</button>
-          </form>
-          <p>
+            <Button type="submit">Entrar</Button>
+          </Form>
+          <RegisterText>
             Não tem uma conta?{" "}
-            <Link to="/register" className="register-link">
+            <RegisterLink as={Link} to="/register">
               Registre-se aqui
-            </Link>
-          </p>
+            </RegisterLink>
+          </RegisterText>
         </article>
-      </section>
-    </main>
+      </FormSection>
+    </MainContainer>
   );
 };
 

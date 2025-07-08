@@ -1,37 +1,48 @@
 import { Link } from "react-router-dom";
-import "./Register.css";
+import {
+  MainContainer,
+  FormSection,
+  Form,
+  Label,
+  Input,
+  Button,
+  LoginText,
+  LoginLink,
+} from "./Register.styled";
 
 const Register = () => {
   return (
-    <main>
-      <section className="form-section">
+    <MainContainer>
+      <FormSection>
         <article>
           <h2>Registrar</h2>
-          <form>
-            <label htmlFor="newName">Nome:</label>
-            <input type="text" id="newName" name="nome" required />
+          <Form>
+            <Label htmlFor="newName">Nome:</Label>
+            <Input type="text" id="newName" name="nome" required />
 
-            <label htmlFor="newCpf">CPF:</label>
-            <input type="text" id="newCpf" name="cpf" required />
+            <Label htmlFor="newCpf">CPF:</Label>
+            <Input type="text" id="newCpf" name="cpf" required />
 
-            <label htmlFor="newEmail">Email:</label>
-            <input type="email" id="newEmail" name="email" required />
+            <Label htmlFor="newEmail">Email:</Label>
+            <Input type="email" id="newEmail" name="email" required />
 
-            <label htmlFor="newPassword">Senha:</label>
-            <input type="password" id="newPassword" name="senha" required />
+            <Label htmlFor="newPassword">Senha:</Label>
+            <Input type="password" id="newPassword" name="senha" required />
 
-            <label htmlFor="newImage">Imagem:</label>
-            <input type="file" id="newImage" name="imagem" accept="image/*" />
+            <Label htmlFor="newImage">Imagem:</Label>
+            <Input type="file" id="newImage" name="imagem" accept="image/*" />
 
-            <br />
-            <button type="submit">Registrar</button>
-          </form>
-          <p>
-            Já tem uma conta? <Link to="/login">Faça login</Link>
-          </p>
+            <Button type="submit">Registrar</Button>
+          </Form>
+          <LoginText>
+            Já tem uma conta?{" "}
+            <LoginLink as={Link} to="/login">
+              Faça login
+            </LoginLink>
+          </LoginText>
         </article>
-      </section>
-    </main>
+      </FormSection>
+    </MainContainer>
   );
 };
 

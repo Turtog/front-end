@@ -1,0 +1,198 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Encanador",
+      "image": "/src/components/images/encanador.jpg",
+      "description": "Reparos em tubulações, vazamentos e instalações hidráulicas",
+      "price": "R$ 80-150",
+      "rating": 4.8,
+      "availability": "Disponível hoje",
+      "category": "Reparos",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "name": "Faxineira",
+      "image": "/src/components/images/faxineira.jpg",
+      "description": "Limpeza residencial completa, organização e higienização",
+      "price": "R$ 60-120",
+      "rating": 4.9,
+      "availability": "Disponível amanhã",
+      "category": "Limpeza",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "name": "Jardineiro",
+      "image": "/src/components/images/jardineiro.jpg",
+      "description": "Manutenção de jardins, poda e paisagismo",
+      "price": "R$ 70-130",
+      "rating": 4.7,
+      "availability": "Disponível hoje",
+      "category": "Jardinagem",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "name": "Pedreiro",
+      "image": "/src/components/images/pedreiro.jpg",
+      "description": "Construção, reformas e reparos em alvenaria",
+      "price": "R$ 120-250",
+      "rating": 4.6,
+      "availability": "Disponível em 2 dias",
+      "category": "Construção",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "name": "Pintor",
+      "image": "/src/components/images/pintor.jpg",
+      "description": "Pintura residencial e comercial, textura e acabamentos",
+      "price": "R$ 90-180",
+      "rating": 4.8,
+      "availability": "Disponível hoje",
+      "category": "Pintura",
+      "featured": true
+    },
+    {
+      "id": 6,
+      "name": "Eletricista",
+      "image": "/src/components/images/eletricista.jpg",
+      "description": "Instalações elétricas, reparos e manutenção",
+      "price": "R$ 100-200",
+      "rating": 4.9,
+      "availability": "Disponível hoje",
+      "category": "Elétrica",
+      "featured": true
+    },
+    {
+      "id": 7,
+      "name": "Marceneiro",
+      "image": "/src/components/images/marceneiro.jpg",
+      "description": "Móveis sob medida, reparos e restauração",
+      "price": "R$ 150-300",
+      "rating": 4.7,
+      "availability": "Disponível em 3 dias",
+      "category": "Móveis",
+      "featured": true
+    },
+    {
+      "id": 8,
+      "name": "Diarista",
+      "image": "/src/components/images/diarista.jpg",
+      "description": "Limpeza diária, organização e serviços domésticos",
+      "price": "R$ 50-100",
+      "rating": 4.8,
+      "availability": "Disponível hoje",
+      "category": "Limpeza",
+      "featured": true
+    },
+    {
+      "id": 9,
+      "name": "Babá",
+      "image": "/src/components/images/baba.jpg",
+      "description": "Cuidados com crianças, atividades educativas e recreativas",
+      "price": "R$ 40-80",
+      "rating": 4.9,
+      "availability": "Disponível hoje",
+      "category": "Cuidados",
+      "featured": false
+    },
+    {
+      "id": 10,
+      "name": "Cuidador de Idosos",
+      "image": "/src/components/images/cuidador.jpg",
+      "description": "Assistência e cuidados especializados para idosos",
+      "price": "R$ 80-150",
+      "rating": 4.8,
+      "availability": "Disponível amanhã",
+      "category": "Cuidados",
+      "featured": false
+    },
+    {
+      "id": 11,
+      "name": "Técnico em Informática",
+      "image": "/src/components/images/tecnico.jpg",
+      "description": "Manutenção de computadores, instalação de softwares",
+      "price": "R$ 60-120",
+      "rating": 4.7,
+      "availability": "Disponível hoje",
+      "category": "Tecnologia",
+      "featured": false
+    },
+    {
+      "id": 12,
+      "name": "Motorista Particular",
+      "image": "/src/components/images/motorista.jpg",
+      "description": "Serviços de transporte particular e acompanhamento",
+      "price": "R$ 25-50",
+      "rating": 4.6,
+      "availability": "Disponível hoje",
+      "category": "Transporte",
+      "featured": false
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Reparos",
+      "icon": "🔧",
+      "color": "#3498db"
+    },
+    {
+      "id": 2,
+      "name": "Limpeza",
+      "icon": "🧹",
+      "color": "#2ecc71"
+    },
+    {
+      "id": 3,
+      "name": "Jardinagem",
+      "icon": "🌱",
+      "color": "#27ae60"
+    },
+    {
+      "id": 4,
+      "name": "Construção",
+      "icon": "🏗️",
+      "color": "#e67e22"
+    },
+    {
+      "id": 5,
+      "name": "Pintura",
+      "icon": "🎨",
+      "color": "#9b59b6"
+    },
+    {
+      "id": 6,
+      "name": "Elétrica",
+      "icon": "⚡",
+      "color": "#f39c12"
+    },
+    {
+      "id": 7,
+      "name": "Móveis",
+      "icon": "🪑",
+      "color": "#8b4513"
+    },
+    {
+      "id": 8,
+      "name": "Cuidados",
+      "icon": "💖",
+      "color": "#e74c3c"
+    },
+    {
+      "id": 9,
+      "name": "Tecnologia",
+      "icon": "💻",
+      "color": "#34495e"
+    },
+    {
+      "id": 10,
+      "name": "Transporte",
+      "icon": "🚗",
+      "color": "#16a085"
+    }
+  ]
+}

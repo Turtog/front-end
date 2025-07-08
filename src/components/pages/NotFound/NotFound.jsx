@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import "./NotFound.css";
+import { MainContainer, StyledLink } from "./NotFound.styled";
 
 const NotFound = () => {
   return (
-    <main className="not-found">
+    <MainContainer>
       <h1>404</h1>
       <h2>Página Não Encontrada</h2>
       <p>A página que você está procurando não existe.</p>
-      <Link to="/" className="btn">
+      <StyledLink as={Link} to="/">
         Voltar para Home
-      </Link>
-    </main>
+      </StyledLink>
+    </MainContainer>
   );
 };
 

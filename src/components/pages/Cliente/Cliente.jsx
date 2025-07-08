@@ -1,4 +1,13 @@
-import "./Cliente.css";
+import {
+  MainContainer,
+  FormSection,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Textarea,
+  Button,
+} from "./Cliente.styled";
 
 const Cliente = () => {
   const handleSubmit = (e) => {
@@ -16,40 +25,40 @@ const Cliente = () => {
   };
 
   return (
-    <main className="cliente">
+    <MainContainer>
       <h1>Pedir Serviço</h1>
-      <section className="form-section">
+      <FormSection>
         <h2>Preencha o formulário abaixo</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="titulo">Título</label>
-            <input type="text" id="titulo" name="titulo" required />
-          </div>
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label htmlFor="titulo">Título</Label>
+            <Input type="text" id="titulo" name="titulo" required />
+          </FormGroup>
 
-          <div className="form-group">
-            <label htmlFor="descricao">Descrição</label>
-            <textarea id="descricao" name="descricao" rows="4" required />
-          </div>
+          <FormGroup>
+            <Label htmlFor="descricao">Descrição</Label>
+            <Textarea id="descricao" name="descricao" rows="4" required />
+          </FormGroup>
 
-          <div className="form-group">
-            <label htmlFor="data">Data</label>
-            <input type="date" id="data" name="data" required />
-          </div>
+          <FormGroup>
+            <Label htmlFor="data">Data</Label>
+            <Input type="date" id="data" name="data" required />
+          </FormGroup>
 
-          <div className="form-group">
-            <label htmlFor="endereco">Endereço</label>
-            <input type="text" id="endereco" name="endereco" required />
-          </div>
+          <FormGroup>
+            <Label htmlFor="endereco">Endereço</Label>
+            <Input type="text" id="endereco" name="endereco" required />
+          </FormGroup>
 
-          <div className="form-group">
-            <label htmlFor="preco">Preço</label>
-            <input type="number" id="preco" name="preco" step="0.01" required />
-          </div>
+          <FormGroup>
+            <Label htmlFor="preco">Preço</Label>
+            <Input type="number" id="preco" name="preco" step="0.01" required />
+          </FormGroup>
 
-          <button type="submit">Enviar Pedido</button>
-        </form>
-      </section>
-    </main>
+          <Button type="submit">Enviar Pedido</Button>
+        </Form>
+      </FormSection>
+    </MainContainer>
   );
 };
 
