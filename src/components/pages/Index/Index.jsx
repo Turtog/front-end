@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useServices, useCarousel } from "../../../hooks/useServices";
+import { useServicos, useCarousel } from "../../../contexts/ServicosProvider";
 import {
   MainContainer,
   MainOptions,
@@ -20,63 +20,66 @@ import {
 } from "./Index.styled";
 
 const Index = () => {
-  const { services: allServices, getFeaturedServices } = useServices();
+  const { services, getFeaturedServices, loading, error } = useServicos();
   const featuredServices = getFeaturedServices();
   const { currentSlide, nextSlide, prevSlide, getItemClass } =
     useCarousel(featuredServices);
 
+  if (loading) {
+    return (
+      <MainContainer>
+        <div style={{ textAlign: "center", padding: "2rem" }}>
+          Carregando serviços...
+        </div>
+      </MainContainer>
+    );
+  }
+
+  if (error) {
+    return (
+      <MainContainer>
+        <div style={{ textAlign: "center", padding: "2rem", color: "red" }}>
+          {error}
+        </div>
+      </MainContainer>
+    );
+  }
+
   return (
     <MainContainer>
-      <MainOptions>
-        <ServiceOption>
-          <h2>Cliente</h2>
-          <p>Precisa de um serviço? Faça seu pedido agora mesmo.</p>
-          <StyledLink as={Link} to="/cliente">
-            Pedir Serviço
-          </StyledLink>
-        </ServiceOption>
-      </MainOptions>
+      {featuredServices.length > 0 && (
+        <ServicesSection>
+          <h1>Serviços mais procurados</h1>
 
-      <ServicesSection>
-        <h1>Serviços mais procurados</h1>
-
-        <ServiceLabels>
-          <ServiceLabel>{featuredServices[currentSlide].name}</ServiceLabel>
-        </ServiceLabels>
-        <CarouselContainer>
-          <Items>
-            {featuredServices.map((service, index) => (
-              <Item key={service.id} className={getItemClass(index)}>
-                <img src={service.image} alt={service.name} />
-                <ServiceInfo>
-                  <h3>{service.name}</h3>
-                  <p>{service.description}</p>
-                  <div className="price">{service.price}</div>
-                  <div className="rating">
-                    ⭐ {service.rating} ({Math.floor(Math.random() * 50 + 10)}{" "}
-                    avaliações)
-                  </div>
-                  <div className="availability">{service.availability}</div>
-                </ServiceInfo>
-              </Item>
-            ))}
-          </Items>
-
-          <CarouselControls>
-            <CarouselBtn onClick={prevSlide}>
-              <i className="fas fa-chevron-left"></i>
-            </CarouselBtn>
-            <CarouselBtn onClick={nextSlide}>
-              <i className="fas fa-chevron-right"></i>
-            </CarouselBtn>
-          </CarouselControls>
-        </CarouselContainer>
-      </ServicesSection>
+          <CarouselContainer>
+            <Items>
+              {featuredServices.map((service, index) => (
+                <Item key={service.id} className={getItemClass(index)}>
+                  <img src={service.image} alt={service.name} />
+                  <ServiceInfo>
+                    <h3>{service.name}</h3>
+                    <p>{service.description}</p>
+                    <div className="price">{service.price}</div>
+                  </ServiceInfo>
+                </Item>
+              ))}
+            </Items>
+            <CarouselControls>
+              <CarouselBtn onClick={prevSlide}>
+                <i className="fas fa-chevron-left"></i>
+              </CarouselBtn>
+              <CarouselBtn onClick={nextSlide}>
+                <i className="fas fa-chevron-right"></i>
+              </CarouselBtn>
+            </CarouselControls>
+          </CarouselContainer>
+        </ServicesSection>
+      )}
 
       <FeaturedServices>
         <h2>Todos os Serviços Disponíveis</h2>
         <ServicesGrid>
-          {allServices.map((service) => (
+          {services.map((service) => (
             <ServiceCard key={service.id}>
               <h3>{service.name}</h3>
               <p>{service.description}</p>

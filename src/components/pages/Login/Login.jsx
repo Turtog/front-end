@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../contexts/AuthProvider";
+import { useRef } from "react";
+import axiosClient from "../../../utils/axios-client";
 import {
   MainContainer,
   FormSection,
@@ -10,31 +13,68 @@ import {
   RegisterLink,
 } from "./Login.styled";
 
-const Login = () => {
+export default function Login() {
+  const { setToken, setUser } = useAuthContext();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const navigate = useNavigate();
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const payload = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+    console.log({ payload });
+
+    // Simulando login bem-sucedido
+    const mockUser = {
+      id: 1,
+      name: "Usuário Teste",
+      email: payload.email,
+    };
+
+    setToken("mock-token-123");
+    setUser(mockUser);
+    alert("Bem Vindo!!");
+    navigate("/perfil");
+  };
+
   return (
     <MainContainer>
       <FormSection>
-        <article>
-          <h2>LOGIN</h2>
-          <Form>
-            <Label htmlFor="email">Email:</Label>
-            <Input type="email" id="email" name="email" required />
+        <h2>Conectar Conta</h2>
+        <Form onSubmit={onSubmit}>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            ref={emailRef}
+            type="email"
+            id="email"
+            placeholder="Email"
+            name="email"
+            required
+          />
 
-            <Label htmlFor="senha">Senha:</Label>
-            <Input type="password" id="senha" name="senha" required />
+          <Label htmlFor="password">Senha</Label>
+          <Input
+            ref={passwordRef}
+            type="password"
+            id="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
 
-            <Button type="submit">Entrar</Button>
-          </Form>
-          <RegisterText>
-            Não tem uma conta?{" "}
-            <RegisterLink as={Link} to="/register">
-              Registre-se aqui
-            </RegisterLink>
-          </RegisterText>
-        </article>
+          <Button type="submit">Login</Button>
+        </Form>
+
+        <RegisterText>
+          Não possui uma conta?{" "}
+          <RegisterLink as={Link} to="/cadastro">
+            Criar conta
+          </RegisterLink>
+        </RegisterText>
       </FormSection>
     </MainContainer>
   );
-};
-
-export default Login;
+}

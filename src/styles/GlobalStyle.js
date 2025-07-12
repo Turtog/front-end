@@ -18,22 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.6;
   }
 
-  .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  main {
-    flex: 1;
-    padding-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 200px);
-    text-align: center;
-    padding: 2rem;
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* Estilos para formulários */
@@ -42,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 600px;
     margin-bottom: 2rem;
   }
-
+  
   .form-group {
     margin-bottom: 1rem;
   }
