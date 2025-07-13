@@ -1,12 +1,11 @@
 import React from "react";
-import { useAuthContext } from "../../contexts/AuthProvider";
+import { useAuth } from "../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  const { user, token } = useAuthContext();
-  const isLoggedIn = !!token && !!user;
+  const { isAuthenticated } = useAuth();
 
-  if (!isLoggedIn) return <Navigate to="/login" />;
+  if (!isAuthenticated) return <Navigate to="/login" />;
 
   return children;
 };

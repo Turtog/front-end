@@ -1,10 +1,6 @@
-import { Link } from "react-router-dom";
 import { useServicos, useCarousel } from "../../../contexts/ServicosProvider";
 import {
   MainContainer,
-  MainOptions,
-  ServiceOption,
-  StyledLink,
   ServicesSection,
   CarouselContainer,
   Items,
@@ -12,8 +8,6 @@ import {
   ServiceInfo,
   CarouselControls,
   CarouselBtn,
-  ServiceLabels,
-  ServiceLabel,
   FeaturedServices,
   ServicesGrid,
   ServiceCard,
@@ -22,8 +16,7 @@ import {
 const Index = () => {
   const { services, getFeaturedServices, loading, error } = useServicos();
   const featuredServices = getFeaturedServices();
-  const { currentSlide, nextSlide, prevSlide, getItemClass } =
-    useCarousel(featuredServices);
+  const { nextSlide, prevSlide, getItemClass } = useCarousel(featuredServices);
 
   if (loading) {
     return (
@@ -55,11 +48,16 @@ const Index = () => {
             <Items>
               {featuredServices.map((service, index) => (
                 <Item key={service.id} className={getItemClass(index)}>
-                  <img src={service.image} alt={service.name} />
+                  <img
+                    src={service.image}
+                    alt={service.name || service.titulo}
+                  />
                   <ServiceInfo>
-                    <h3>{service.name}</h3>
-                    <p>{service.description}</p>
-                    <div className="price">{service.price}</div>
+                    <h3>{service.name || service.titulo}</h3>
+                    <p>{service.description || service.descricao}</p>
+                    <div className="price">
+                      {service.price || `R$ ${service.preco}`}
+                    </div>
                   </ServiceInfo>
                 </Item>
               ))}
@@ -81,13 +79,17 @@ const Index = () => {
         <ServicesGrid>
           {services.map((service) => (
             <ServiceCard key={service.id}>
-              <h3>{service.name}</h3>
-              <p>{service.description}</p>
+              <h3>{service.name || service.titulo}</h3>
+              <p>{service.description || service.descricao}</p>
               <div className="service-details">
-                <span className="price">{service.price}</span>
-                <span className="rating">⭐ {service.rating}</span>
+                <span className="price">
+                  {service.price || `R$ ${service.preco}`}
+                </span>
+                <span className="rating">⭐ {service.rating || "4.5"}</span>
               </div>
-              <div className="availability">{service.availability}</div>
+              <div className="availability">
+                {service.availability || "Consulte disponibilidade"}
+              </div>
               <button className="service-btn">Solicitar Serviço</button>
             </ServiceCard>
           ))}

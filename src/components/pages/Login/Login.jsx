@@ -27,17 +27,26 @@ export default function Login() {
     };
     console.log({ payload });
 
-    // Simulando login bem-sucedido
-    const mockUser = {
-      id: 1,
-      name: "Usuário Teste",
-      email: payload.email,
-    };
+    try {
+      const response = await axiosClient.post("/auth/login", payload);
+      const { user, token } = response.data;
 
-    setToken("mock-token-123");
-    setUser(mockUser);
-    alert("Bem Vindo!!");
-    navigate("/perfil");
+      if (token && user) {
+        setToken(token);
+        setUser(user);
+        alert("Bem Vindo!!");
+        navigate("/perfil");
+      } else {
+        alert("Credenciais inválidas");
+      }
+    } catch (error) {
+      console.error("Erro no login:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        "Erro ao fazer login";
+      alert(errorMessage);
+    }
   };
 
   return (

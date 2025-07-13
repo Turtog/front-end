@@ -13,13 +13,13 @@ import {
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, token, setToken } = useAuthContext();
+  const { user, token, logout } = useAuthContext();
 
   const isActive = (path) => location.pathname === path;
   const isLoggedIn = !!token && !!user;
 
-  const onLogout = () => {
-    setToken(null);
+  const onLogout = async () => {
+    await logout();
     navigate("/login");
   };
 
@@ -71,7 +71,7 @@ const Header = () => {
                   to="/cliente"
                   className={isActive("/cliente") ? "active" : ""}
                 >
-                  Solicitar Serviço
+                  Cadastrar Serviço
                 </StyledLink>
               </NavItem>
               <NavItem>

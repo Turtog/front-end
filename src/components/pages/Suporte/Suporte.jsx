@@ -1,3 +1,5 @@
+import { useState } from "react";
+import axiosClient from "../../../utils/axios-client";
 import {
   MainContainer,
   FormSection,
@@ -10,16 +12,35 @@ import {
 } from "./Suporte.styled";
 
 const Suporte = () => {
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      nome: formData.get("nome"),
-      email: formData.get("email"),
-      mensagem: formData.get("mensagem"),
-    };
-    console.log("Dados de suporte:", data);
-    alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+
+    try {
+      setLoading(true);
+      const formData = new FormData(e.target);
+      const data = {
+        nome: formData.get("nome"),
+        email: formData.get("email"),
+        mensagem: formData.get("mensagem"),
+      };
+
+      console.log("Dados de suporte:", data);
+
+      const response = await axiosClient.post("/suporte", data);
+      console.log("Mensagem enviada:", response.data);
+
+      alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+      e.target.reset(); // Limpa o formulário
+    } catch (error) {
+      console.error("Erro ao enviar mensagem:", error);
+      const errorMessage =
+        error.response?.data?.message || "Erro ao enviar mensagem";
+      alert(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,7 +64,9 @@ const Suporte = () => {
             <Textarea id="mensagem" name="mensagem" rows={4} required />
           </FormGroup>
 
-          <Button type="submit">Enviar</Button>
+          <Button type="submit" disabled={loading}>
+            {loading ? "Enviando..." : "Enviar"}
+          </Button>
         </Form>
       </FormSection>
     </MainContainer>

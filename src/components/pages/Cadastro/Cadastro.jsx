@@ -15,7 +15,6 @@ import {
 const Cadastro = () => {
   const [disableButton, setDisableButton] = useState(true);
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [emailInvalid, setEmailInvalid] = useState(false);
   const [password, setPassword] = useState("");
@@ -30,11 +29,6 @@ const Cadastro = () => {
     setName(event.target.value);
   };
 
-  const handleSurname = (event) => {
-    handleEnableButton();
-    setSurname(event.target.value);
-  };
-
   const handleEmail = (event) => {
     handleEnableButton();
     setEmail(event.target.value);
@@ -47,7 +41,7 @@ const Cadastro = () => {
   };
 
   const handleEnableButton = () => {
-    if (name !== "" && surname !== "" && email !== "" && password !== "")
+    if (name !== "" && email !== "" && password !== "")
       setDisableButton(
         !(confirmPassword.current.value === inputPassword.current.value)
       );
@@ -56,24 +50,26 @@ const Cadastro = () => {
   const onSubmit = async (event) => {
     try {
       event.preventDefault();
-      console.log({ name, email, password });
       const payload = {
         name: name,
-        surname: surname,
         email: email,
         password: password,
         password_confirmation: confirmPassword.current.value,
       };
       console.log({ payload });
-      const response = await axiosClient.post("/users", payload);
-      if (response?.status !== 201) throw new Error(response.data);
+      const response = await axiosClient.post("/auth/register", payload);
       console.log(response);
       const { data } = response;
       console.log({ data });
-      alert("Usuário criado");
+      alert("Usuário criado com sucesso!");
       navigate("/login");
     } catch (error) {
-      console.error(error.response.data.message);
+      console.error("Erro no cadastro:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        "Erro ao criar usuário";
+      alert(errorMessage);
     }
   };
 
@@ -82,23 +78,13 @@ const Cadastro = () => {
       <FormSection>
         <h2>Novo Usuário</h2>
         <Form onSubmit={onSubmit}>
-          <Label htmlFor="name">Nome de Login</Label>
+          <Label htmlFor="name">Nome Completo</Label>
           <Input
             type="text"
             id="name"
-            placeholder="Nome de Login"
+            placeholder="Nome Completo"
             name="name"
             onChange={handleName}
-            required
-          />
-
-          <Label htmlFor="surname">Sobrenome</Label>
-          <Input
-            type="text"
-            id="surname"
-            placeholder="Sobrenome"
-            name="surname"
-            onChange={handleSurname}
             required
           />
 
