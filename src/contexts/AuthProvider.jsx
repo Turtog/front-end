@@ -12,10 +12,23 @@ const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("CURRENT_USER"))
-  );
-  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [user, setUser] = useState(() => {
+    try {
+      const storedUser = localStorage.getItem("CURRENT_USER");
+      return storedUser ? JSON.parse(storedUser) : null;
+    } catch (error) {
+      console.error("Erro ao recuperar usuário do localStorage:", error);
+      return null;
+    }
+  });
+  const [token, _setToken] = useState(() => {
+    try {
+      return localStorage.getItem("ACCESS_TOKEN");
+    } catch (error) {
+      console.error("Erro ao recuperar token do localStorage:", error);
+      return null;
+    }
+  });
 
   const setToken = (token) => {
     _setToken(token);
@@ -25,7 +38,22 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       return;
     }
-    localStorage.setItem("ACCESS_TOKEN", token);
+    try {
+      localStorage.setItem("ACCESS_TOKEN", token);
+    } catch (error) {
+      console.error("Erro ao salvar token no localStorage:", error);
+    }
+  };
+
+  const setUserData = (userData) => {
+    setUser(userData);
+    if (userData) {
+      try {
+        localStorage.setItem("CURRENT_USER", JSON.stringify(userData));
+      } catch (error) {
+        console.error("Erro ao salvar usuário no localStorage:", error);
+      }
+    }
   };
 
   const logout = async () => {
@@ -47,7 +75,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         user,
         token,
-        setUser,
+        setUser: setUserData,
         setToken,
         logout,
       }}

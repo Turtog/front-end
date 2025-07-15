@@ -83,7 +83,7 @@ const Header = () => {
                 </StyledLink>
               </NavItem>
               <NavItem>
-                <LogoutButton onClick={onLogout}>Sair</LogoutButton>
+                <StyledLink onClick={onLogout}>Sair</StyledLink>
               </NavItem>
             </>
           )}

@@ -14,7 +14,6 @@ export const ServicoContext = createContext({
   createServico: () => {},
   getFeaturedServices: () => [],
   getServiceById: () => null,
-  searchServices: () => [],
 });
 
 export const ServicoProvider = ({ children }) => {
@@ -206,20 +205,6 @@ export const ServicoProvider = ({ children }) => {
     return services.find((service) => service.id === parseInt(id));
   };
 
-  // Função para buscar serviços
-  const searchServices = (query) => {
-    if (!query.trim()) return services;
-
-    const searchTerm = query.toLowerCase().trim();
-    return services.filter(
-      (service) =>
-        service.name?.toLowerCase().includes(searchTerm) ||
-        service.description?.toLowerCase().includes(searchTerm) ||
-        service.titulo?.toLowerCase().includes(searchTerm) ||
-        service.descricao?.toLowerCase().includes(searchTerm)
-    );
-  };
-
   return (
     <ServicoContext.Provider
       value={{
@@ -234,7 +219,6 @@ export const ServicoProvider = ({ children }) => {
         createServico,
         getFeaturedServices,
         getServiceById,
-        searchServices,
       }}
     >
       {children}

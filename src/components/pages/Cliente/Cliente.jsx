@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axiosClient from "../../../utils/axios-client";
+import { useServicos } from "../../../contexts/ServicosProvider";
 import ModalEditServico from "./ModalEditServico";
 import ModalRemoveServico from "./ModalRemoveServico";
 import {
@@ -21,30 +21,19 @@ import {
 
 const Cliente = () => {
   const [loading, setLoading] = useState(false);
-  const [Servicos, setServicos] = useState([]);
-  const [loadingServicos, setLoadingServicos] = useState(false);
+
+  // Usando o contexto de serviços
+  const {
+    services: Servicos,
+    loading: loadingServicos,
+    createServico,
+    loadServicos,
+  } = useServicos();
 
   // Estados dos modais
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showModalRemove, setShowModalRemove] = useState(false);
   const [servicoAtual, setServicoAtual] = useState({});
-
-  // Função para carregar todos os serviços
-  const loadServicos = async () => {
-    try {
-      setLoadingServicos(true);
-
-      const response = await axiosClient.get("/servicos");
-      const servicos = response.data?.data || [];
-      console.log("Serviços carregados:", servicos);
-      setServicos(servicos);
-    } catch (error) {
-      console.error("Erro ao carregar serviços:", error);
-      setServicos([]);
-    } finally {
-      setLoadingServicos(false);
-    }
-  };
 
   // Função para abrir modal de edição
   const openModalEdit = (id) => {
@@ -81,12 +70,13 @@ const Cliente = () => {
 
       console.log("Dados do serviço:", data);
 
-      const response = await axiosClient.post("/servicos", data);
-      console.log("Serviço criado:", response.data);
+      // Usando a função do contexto para criar o serviço
+      const novoServico = await createServico(data);
 
-      alert("Serviço cadastrado com sucesso!");
-      e.target.reset();
-      loadServicos();
+      if (novoServico) {
+        alert("Serviço cadastrado com sucesso!");
+        e.target.reset();
+      }
     } catch (error) {
       console.error("Erro ao cadastrar serviço:", error);
       const errorMessage =
@@ -96,11 +86,6 @@ const Cliente = () => {
       setLoading(false);
     }
   };
-
-  // Carregar serviços ao montar o componente
-  useEffect(() => {
-    loadServicos();
-  }, []);
 
   return (
     <MainContainer>
