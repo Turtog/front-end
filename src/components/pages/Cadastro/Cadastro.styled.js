@@ -51,7 +51,6 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
 
   &:focus {
     outline: none;
@@ -68,11 +67,13 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease,
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: 1rem;
 
   &:hover {
     background-color: #218838;
+    transform: scale(1.08);
   }
 `;
 
@@ -86,8 +87,10 @@ export const LoginLink = styled.a`
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
+  transition: letter-spacing 0.5s ease;
 
   &:hover {
     text-decoration: underline;
+    letter-spacing: 2px;
   }
 `;

@@ -25,56 +25,6 @@ export const MainOptions = styled.section`
   }
 `;
 
-export const ServiceOption = styled.article`
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-  }
-
-  p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #7f8c8d;
-    line-height: 1.6;
-  }
-
-  @media (min-width: 768px) {
-    flex: 1;
-    max-width: 400px;
-  }
-`;
-
-export const StyledLink = styled.a`
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #3498db;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-  }
-`;
-
 export const ServicesSection = styled.section`
   width: 100%;
   max-width: 1000px;
@@ -418,7 +368,7 @@ export const ServiceCard = styled.div`
   .service-btn {
     width: 100%;
     padding: 0.75rem;
-    background-color: #3498db;
+    background-color: #2980b9;
     color: white;
     border: none;
     border-radius: 8px;
@@ -427,7 +377,7 @@ export const ServiceCard = styled.div`
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #2980b9;
+      background-color: #085385ff;
     }
   }
 `;

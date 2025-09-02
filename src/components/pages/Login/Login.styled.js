@@ -51,11 +51,12 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 1s ease;
 
   &:focus {
     outline: none;
     border-color: #007bff;
+    background-color: #e3f2fd;
   }
 `;
 
@@ -68,10 +69,18 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.7s ease, color 0.7s ease,
+    box-shadow 0.3s linear, border-left 0.1s ease-out,
+    border-right 0.1s ease-out, padding-left 1.5s, padding-right 1.5s;
 
   &:hover {
-    background-color: #218838;
+    background-color: #005514ff;
+    color: #fff;
+    box-shadow: 0px 0px 10px #005514ff;
+    border-left: 20px solid #005514ff;
+    border-right: 20px solid #005514ff;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 `;
 
