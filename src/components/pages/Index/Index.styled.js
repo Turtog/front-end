@@ -1,3 +1,30 @@
+export const Skeleton = styled.div`
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  min-height: 20px;
+  width: 100%;
+  animation: skeleton-loading 1.2s infinite linear;
+  @keyframes skeleton-loading {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+`;
+
+export const SkeletonCard = styled.div`
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
 import styled from "styled-components";
 
 export const MainContainer = styled.main`

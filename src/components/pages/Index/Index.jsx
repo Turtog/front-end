@@ -11,6 +11,8 @@ import {
   FeaturedServices,
   ServicesGrid,
   ServiceCard,
+  Skeleton,
+  SkeletonCard,
 } from "./Index.styled";
 
 const Index = () => {
@@ -21,9 +23,55 @@ const Index = () => {
   if (loading) {
     return (
       <MainContainer>
-        <div style={{ textAlign: "center", padding: "2rem" }}>
-          Carregando serviços...
-        </div>
+        <ServicesSection>
+          <h1>
+            <Skeleton
+              style={{ width: "60%", height: 40, margin: "0 auto 2rem auto" }}
+            />
+          </h1>
+          <CarouselContainer>
+            <Items>
+              {[...Array(3)].map((_, idx) => (
+                <Item key={idx} className="active">
+                  <Skeleton
+                    style={{ width: "100%", height: 180, marginBottom: 16 }}
+                  />
+                  <ServiceInfo>
+                    <Skeleton style={{ width: "80%", height: 24 }} />
+                    <Skeleton style={{ width: "100%", height: 16 }} />
+                    <Skeleton style={{ width: "40%", height: 20 }} />
+                  </ServiceInfo>
+                </Item>
+              ))}
+            </Items>
+            <CarouselControls>
+              <CarouselBtn disabled>
+                <i className="fas fa-chevron-left"></i>
+              </CarouselBtn>
+              <CarouselBtn disabled>
+                <i className="fas fa-chevron-right"></i>
+              </CarouselBtn>
+            </CarouselControls>
+          </CarouselContainer>
+        </ServicesSection>
+        <FeaturedServices>
+          <h2>
+            <Skeleton
+              style={{ width: "40%", height: 32, margin: "0 auto 2rem auto" }}
+            />
+          </h2>
+          <ServicesGrid>
+            {[...Array(6)].map((_, idx) => (
+              <SkeletonCard key={idx}>
+                <Skeleton style={{ width: "70%", height: 24 }} />
+                <Skeleton style={{ width: "100%", height: 16 }} />
+                <Skeleton style={{ width: "40%", height: 20 }} />
+                <Skeleton style={{ width: "30%", height: 16 }} />
+                <Skeleton style={{ width: "60%", height: 32 }} />
+              </SkeletonCard>
+            ))}
+          </ServicesGrid>
+        </FeaturedServices>
       </MainContainer>
     );
   }
