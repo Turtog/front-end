@@ -1,5 +1,5 @@
 export const Skeleton = styled.div`
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+  background: linear-gradient(90deg, #e0e7ff 25%, #6366f1 37%, #e0e7ff 63%);
   border-radius: 8px;
   margin-bottom: 1rem;
   min-height: 20px;

@@ -1,4 +1,5 @@
 import { useServicos, useCarousel } from "../../../contexts/ServicosProvider";
+import "animate.css";
 import {
   MainContainer,
   ServicesSection,
@@ -25,21 +26,31 @@ const Index = () => {
       <MainContainer>
         <ServicesSection>
           <h1>
-            <Skeleton
-              style={{ width: "60%", height: 40, margin: "0 auto 2rem auto" }}
-            />
+            <div className="animate__animated animate__pulse animate__infinite">
+              <Skeleton
+                style={{ width: "60%", height: 40, margin: "0 auto 2rem auto" }}
+              />
+            </div>
           </h1>
           <CarouselContainer>
             <Items>
               {[...Array(3)].map((_, idx) => (
                 <Item key={idx} className="active">
-                  <Skeleton
-                    style={{ width: "100%", height: 180, marginBottom: 16 }}
-                  />
+                  <div className="animate__animated animate__pulse animate__infinite">
+                    <Skeleton
+                      style={{ width: "100%", height: 180, marginBottom: 16 }}
+                    />
+                  </div>
                   <ServiceInfo>
-                    <Skeleton style={{ width: "80%", height: 24 }} />
-                    <Skeleton style={{ width: "100%", height: 16 }} />
-                    <Skeleton style={{ width: "40%", height: 20 }} />
+                    <div className="animate__animated animate__pulse animate__infinite">
+                      <Skeleton style={{ width: "80%", height: 24 }} />
+                    </div>
+                    <div className="animate__animated animate__pulse animate__infinite">
+                      <Skeleton style={{ width: "100%", height: 16 }} />
+                    </div>
+                    <div className="animate__animated animate__pulse animate__infinite">
+                      <Skeleton style={{ width: "40%", height: 20 }} />
+                    </div>
                   </ServiceInfo>
                 </Item>
               ))}
@@ -56,18 +67,30 @@ const Index = () => {
         </ServicesSection>
         <FeaturedServices>
           <h2>
-            <Skeleton
-              style={{ width: "40%", height: 32, margin: "0 auto 2rem auto" }}
-            />
+            <div className="animate__animated animate__pulse animate__infinite">
+              <Skeleton
+                style={{ width: "40%", height: 32, margin: "0 auto 2rem auto" }}
+              />
+            </div>
           </h2>
           <ServicesGrid>
             {[...Array(6)].map((_, idx) => (
               <SkeletonCard key={idx}>
-                <Skeleton style={{ width: "70%", height: 24 }} />
-                <Skeleton style={{ width: "100%", height: 16 }} />
-                <Skeleton style={{ width: "40%", height: 20 }} />
-                <Skeleton style={{ width: "30%", height: 16 }} />
-                <Skeleton style={{ width: "60%", height: 32 }} />
+                <div className="animate__animated animate__pulse animate__infinite">
+                  <Skeleton style={{ width: "70%", height: 24 }} />
+                </div>
+                <div className="animate__animated animate__pulse animate__infinite">
+                  <Skeleton style={{ width: "100%", height: 16 }} />
+                </div>
+                <div className="animate__animated animate__pulse animate__infinite">
+                  <Skeleton style={{ width: "40%", height: 20 }} />
+                </div>
+                <div className="animate__animated animate__pulse animate__infinite">
+                  <Skeleton style={{ width: "30%", height: 16 }} />
+                </div>
+                <div className="animate__animated animate__pulse animate__infinite">
+                  <Skeleton style={{ width: "60%", height: 32 }} />
+                </div>
               </SkeletonCard>
             ))}
           </ServicesGrid>
