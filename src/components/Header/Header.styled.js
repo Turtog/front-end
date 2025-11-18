@@ -10,20 +10,31 @@ export const HeaderContainer = styled.header`
 
 export const Nav = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem;
   background-color: #0583f2;
+  gap: 0.5rem;
 `;
 
-export const Logo = styled.img`
-  max-height: 3rem;
+/* LOGO PNG */
+export const LogoIMG = styled.img`
+  height: 3.5rem;
+  cursor: grab;
+  user-select: none;
+`;
+
+/* SVG DO NOME */
+export const LogoSVG = styled.img`
+  height: 3rem;
+  margin-left: 0.5rem;
 `;
 
 export const NavLinks = styled.ul`
   list-style: none;
   display: flex;
   gap: 1rem;
+  margin-left: auto;
 `;
 
 export const NavItem = styled.li`
@@ -50,23 +61,5 @@ export const StyledLink = styled(Link)`
     &:hover {
       background-color: #229954;
     }
-  }
-`;
-
-export const LogoutButton = styled.button`
-  color: #fff;
-  background-color: #e74c3c;
-  border: none;
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-  font-family: inherit;
-
-  &:hover {
-    background-color: #c0392b;
   }
 `;

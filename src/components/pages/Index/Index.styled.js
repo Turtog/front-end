@@ -334,8 +334,8 @@ export const FeaturedServices = styled.section`
 export const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin-top: 1rem; /* reduz a distância entre a lupa e os cards */
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
