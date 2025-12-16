@@ -127,11 +127,7 @@ const Index = () => {
   const { nextSlide, prevSlide, getItemClass } = useCarousel(featuredServices);
 
   if (loading) {
-    return (
-      <MainContainer>
-        {/* ... SEU CÓDIGO DO LOADING COMO ESTAVA ... */}
-      </MainContainer>
-    );
+    return <MainContainer></MainContainer>;
   }
 
   if (error) {
@@ -155,6 +151,7 @@ const Index = () => {
               {featuredServices.map((service, index) => (
                 <Item key={service.id} className={getItemClass(index)}>
                   <img
+                    className="img-fade-hover"
                     src={service.image}
                     alt={service.name || service.titulo}
                   />
