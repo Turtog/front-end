@@ -30,6 +30,18 @@ export const LogoSVG = styled.img`
   margin-left: 0.5rem;
 `;
 
+/* CONTAINER SVGATOR */
+export const LogoSVGContainer = styled.div`
+  height: 3.5rem;
+  cursor: grab;
+  user-select: none;
+
+  object {
+    height: 100%;
+    pointer-events: none;
+  }
+`;
+
 export const NavLinks = styled.ul`
   list-style: none;
   display: flex;

@@ -2,12 +2,14 @@ import { useEffect, useRef } from "react";
 import { animate, createScope, spring, createDraggable } from "animejs";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthProvider";
+import { SVGatorCSSOnlyForReactJS } from "../SVGator/SVGator";
+import "../../styles/tailwind.css";
 
 import {
   HeaderContainer,
   Nav,
-  LogoIMG,
   LogoSVG,
+  LogoSVGContainer,
   NavLinks,
   NavItem,
   StyledLink,
@@ -43,15 +45,6 @@ const Header = () => {
         container: [0, 0, 0, 0],
         releaseEase: spring({ bounce: 0.6 }),
       });
-
-      animate("#site-name", {
-        scale: [
-          { to: 1.2, ease: "inOut(2)", duration: 250 },
-          { to: 1, ease: spring({ bounce: 0.7 }) },
-        ],
-        loop: true,
-        loopDelay: 200,
-      });
     });
 
     return () => scope.current.revert();
@@ -60,15 +53,14 @@ const Header = () => {
   return (
     <HeaderContainer ref={root}>
       <Nav>
-        <LogoIMG
-          id="site-logo"
-          src="/src/components/images/logo.png"
-          alt="Logo PNG"
-        />
+        <LogoSVGContainer id="site-logo">
+          <SVGatorCSSOnlyForReactJS />
+        </LogoSVGContainer>
         <LogoSVG
           id="site-name"
           src="/src/components/images/eufaco.svg"
           alt="Nome do Site"
+          className="animate-bounce"
         />
 
         <NavLinks>
