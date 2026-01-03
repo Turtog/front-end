@@ -3,6 +3,14 @@ import "animate.css";
 import { useEffect } from "react";
 import { animate, svg } from "animejs";
 
+import { register } from "swiper/element/bundle";
+register();
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import {
   MainContainer,
   ServicesSection,
@@ -17,6 +25,7 @@ import {
   ServiceCard,
   Skeleton,
   SkeletonCard,
+  SwiperContainer,
 } from "./Index.styled";
 
 const LupaMotion = () => {
@@ -183,7 +192,6 @@ const Index = () => {
       <FeaturedServices>
         <h2>Todos os Serviços Disponíveis</h2>
 
-        {/* 🔥 MOVI PARA FORA DA CONDIÇÃO E FORA DO RETURN ANTES DOS HOOKS */}
         <LupaMotion />
 
         <ServicesGrid>
@@ -205,6 +213,38 @@ const Index = () => {
           ))}
         </ServicesGrid>
       </FeaturedServices>
+      <SwiperContainer>
+        <h1>Galeria de Serviços</h1>
+        <Swiper
+          effect="coverflow"
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          navigation
+        >
+          <SwiperSlide>
+            <img src="/src/components/images/manicure.jpg" alt="Manicure" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/src/components/images/parede.jpg" alt="Parede" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/src/components/images/grama.jpg" alt="Grama" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/src/components/images/encanamento.jpg" alt="Encamento" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/src/components/images/faxina.jpg" alt="Faxina" />
+          </SwiperSlide>
+        </Swiper>
+      </SwiperContainer>
     </MainContainer>
   );
 };

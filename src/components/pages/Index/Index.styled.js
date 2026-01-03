@@ -408,3 +408,88 @@ export const ServiceCard = styled.div`
     }
   }
 `;
+
+export const SwiperContainer = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem 0;
+
+  h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .swiper {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      height: 320px;
+    }
+
+    @media (max-width: 480px) {
+      height: 240px;
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f9fa;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #3498db;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    &::after {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+
+      &::after {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #3498db;
+    opacity: 0.5;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #2980b9;
+  }
+`;
